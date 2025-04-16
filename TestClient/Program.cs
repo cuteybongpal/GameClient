@@ -14,8 +14,8 @@ namespace TestClient
             IPEndPoint connectAddr = new IPEndPoint(ipAddr, 7777);
             Socket socket =  new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(endPoint);
-            //socket.Connect(con)
-
+            socket.Connect(connectAddr);
+            //아 그 뭐였지 보내기 하쇼
             while (true)
             {
 
