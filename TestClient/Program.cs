@@ -15,7 +15,11 @@ namespace TestClient
             Socket socket =  new Socket(endPoint.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
             socket.Bind(endPoint);
             socket.Connect(connectAddr);
+
+            SendSocket sendSocket = new SendSocket();
             //아 그 뭐였지 보내기 하쇼
+            Packet packet = new Packet(HeaderType.H_string, new object[] { "클라이언트 기모찌" });
+            sendSocket.SendPacket(packet.PacketToArray(), null);
             while (true)
             {
 
