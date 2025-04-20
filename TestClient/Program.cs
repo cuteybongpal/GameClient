@@ -16,13 +16,18 @@ namespace TestClient
             socket.Bind(endPoint);
             socket.Connect(connectAddr);
 
-            SendSocket sendSocket = new SendSocket();
+            SendSocket sendSocket = new SendSocket(socket);
             //아 그 뭐였지 보내기 하쇼
-            Packet packet = new Packet(HeaderType.H_string, new object[] { "클라이언트 기모찌" });
-            sendSocket.SendPacket(packet.PacketToArray(), null);
+            
+            for (int i = 0; i < 5; i++)
+            {
+                Packet packet = new Packet(HeaderType.H_string, new object[] { $"클라이언트 기모찌" });
+                sendSocket.SendPacket(packet.PacketToArray());
+                Task.Delay(100);
+            }
             while (true)
             {
-
+                ;
             }
         }
     }

@@ -10,6 +10,7 @@ namespace TestClient
 {
     internal class RecvSocket
     {
+
         Socket recvSocket;
         SocketAsyncEventArgs e = new SocketAsyncEventArgs();
         PacketProcessor processor = new PacketProcessor();
@@ -42,10 +43,8 @@ namespace TestClient
             {
                 byte[] buffer = e.Buffer;
                 Socket _sender = e.ConnectSocket;
-                Task.Run(() =>
-                {
-                    processor.ProcessPacket(buffer, _sender);
-                });
+               
+                processor.ProcessPacket(buffer, _sender);
             }
             else
             {
